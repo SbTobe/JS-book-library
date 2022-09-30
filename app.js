@@ -1,12 +1,12 @@
 //Book class
 
 class Book {
-  constructor(title, author, pages) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
+    constructor(title, author, pages) {
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+    }
   }
-}
 
 //UI Class
 class UI {
@@ -43,12 +43,21 @@ class UI {
     list.appendChild(row);
   }
 }
-//Store class
 
-//Events display books
+//display books
 
 document.addEventListener("DOMContentLoaded", UI.displayBooks);
 
-// Event add book
+// function to add book
+document.querySelector("#book-form").addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const pages = document.querySelector('#pages').value;
 
-//event remove book
+  const book = new Book(title, author, pages);
+  
+  UI.addBookToList(book);
+});
+
